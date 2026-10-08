@@ -45,11 +45,11 @@
         }
     },
     "scripts": {
-        "test": "pest --cache-directory=.phpunit.cache tests/Feature",
+        "test": "pest --cache-directory=.phpunit.cache --do-not-record-test-run-history tests/Feature",
         "lint": "pint --test",
         "format": "pint",
         "analyse": "phpstan analyse --memory-limit=1G",
-        "benchmark": "pest --cache-directory=.phpunit.cache tests/Performance"
+        "benchmark": "pest --cache-directory=.phpunit.cache --do-not-record-test-run-history tests/Performance"
     },
     "config": {
         "allow-plugins": {
