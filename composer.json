@@ -1,0 +1,69 @@
+{
+    "$schema": "https://getcomposer.org/schema.json",
+    "name": "digit7s/filament-audit-toolkit",
+    "description": "A read-only Filament 5 explorer and record history for Digit7s Laravel audit events.",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Digit7s"
+        }
+    ],
+    "repositories": [
+        {
+            "type": "path",
+            "url": "../../laravel-audit-toolkit",
+            "options": {
+                "symlink": true,
+                "versions": {
+                    "digit7s/laravel-audit-toolkit": "0.1.0"
+                }
+            }
+        }
+    ],
+    "require": {
+        "php": "^8.5",
+        "digit7s/laravel-audit-toolkit": "^0.1",
+        "filament/filament": "^5.9"
+    },
+    "require-dev": {
+        "larastan/larastan": "^3.13",
+        "laravel/pint": "^1.32",
+        "orchestra/testbench": "^11.0",
+        "pestphp/pest": "^5.2",
+        "pestphp/pest-plugin-laravel": "^5.0",
+        "pestphp/pest-plugin-livewire": "^5.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Digit7s\\FilamentAuditToolkit\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Digit7s\\FilamentAuditToolkit\\Tests\\": "tests/"
+        }
+    },
+    "scripts": {
+        "test": "pest --compact tests/Feature",
+        "lint": "pint --test",
+        "format": "pint",
+        "analyse": "phpstan analyse --memory-limit=1G",
+        "benchmark": "pest --compact tests/Performance"
+    },
+    "config": {
+        "allow-plugins": {
+            "pestphp/pest-plugin": true
+        },
+        "sort-packages": true
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Digit7s\\FilamentAuditToolkit\\FilamentAuditServiceProvider"
+            ]
+        }
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true
+}

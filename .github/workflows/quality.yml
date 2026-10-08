@@ -1,0 +1,34 @@
+name: Filament audit toolkit quality
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  quality:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Checkout private Laravel core dependency
+        uses: actions/checkout@v4
+        with:
+          repository: Digit7s/laravel-audit-toolkit
+          ref: main
+          path: .ci/laravel-audit-toolkit
+          token: ${{ secrets.DIGIT7S_PACKAGES_READ_TOKEN }}
+      - name: Configure the core dependency as a local Composer repository
+        run: >-
+          composer config repositories.digit7s-core
+          '{"type":"path","url":".ci/laravel-audit-toolkit","options":{"symlink":false,"versions":{"digit7s/laravel-audit-toolkit":"0.1.0"}}}'
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.5'
+          extensions: pdo_sqlite
+          coverage: none
+      - run: composer install --no-interaction --prefer-dist
+      - run: composer validate --no-check-publish
+      - run: composer analyse
+      - run: composer lint
+      - run: composer test
