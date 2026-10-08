@@ -45,11 +45,11 @@
         }
     },
     "scripts": {
-        "test": "pest --compact tests/Feature",
+        "test": "pest tests/Feature",
         "lint": "pint --test",
         "format": "pint",
         "analyse": "phpstan analyse --memory-limit=1G",
-        "benchmark": "pest --compact tests/Performance"
+        "benchmark": "pest tests/Performance"
     },
     "config": {
         "allow-plugins": {
