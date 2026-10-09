@@ -84,13 +84,13 @@ If `viewRawValues` is omitted, safe value presentation follows `view`. Safe valu
 
 `Digit7s\FilamentAuditToolkit\Resources\AuditEventResource` provides a paginated, read-only table with event-name search, event/category/date filters, actor and subject references, occurrence timestamps, and optional source, request, correlation, batch, and original-actor columns. Event names and the eye action link only to authorized detail views.
 
-<img class="filament-hidden" src="https://raw.githubusercontent.com/Digit7s/filament-audit-toolkit/main/art/audit-index-page.png" alt="Audit Explorer">
+<img src="https://raw.githubusercontent.com/Digit7s/filament-audit-toolkit/main/art/audit-index-page.png" alt="Audit Explorer">
 
 ## Audit Detail
 
 The detail page is `Digit7s\FilamentAuditToolkit\Resources\AuditEventResource\Pages\ViewAuditEvent`. It presents event summary, execution context, safe metadata, bounded field changes, and authorized developer details. Long event names wrap safely and exact timestamps are shown in UTC with relative context.
 
-<img class="filament-hidden" src="https://raw.githubusercontent.com/Digit7s/filament-audit-toolkit/main/art/audit-detail-page.png" alt="Audit Detail">
+<img src="https://raw.githubusercontent.com/Digit7s/filament-audit-toolkit/main/art/audit-detail-page.png" alt="Audit Detail">
 
 ## Record History
 
