@@ -18,6 +18,10 @@ jobs:
           git -c credential.helper= clone --depth=1 --branch main
           https://github.com/Digit7s/laravel-audit-toolkit.git
           ../../laravel-audit-toolkit
+      - name: Configure local Laravel core repository
+        run: >-
+          composer config --json repositories.digit7s-audit-toolkit
+          '{"type":"path","url":"../../laravel-audit-toolkit","options":{"symlink":true,"versions":{"digit7s/laravel-audit-toolkit":"0.1.0"}}}'
       - uses: shivammathur/setup-php@v2
         with:
           php-version: '8.5'

@@ -21,7 +21,9 @@ class SecondaryPanelProvider extends PanelProvider
                         view: fn ($event, ?object $user): bool => $user?->name === 'Secondary Admin' && $event->event === 'secondary.allowed',
                         viewRawValues: fn ($event, ?object $user): bool => $user?->name === 'Secondary Admin',
                         viewSubjectHistory: fn ($subject, ?object $user): bool => $user?->name === 'Secondary Admin',
-                    ),
+                    )
+                    ->diffStyle('fields')
+                    ->availableDiffStyles(['fields']),
             );
     }
 }

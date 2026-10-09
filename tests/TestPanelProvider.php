@@ -21,7 +21,10 @@ class TestPanelProvider extends PanelProvider
                         viewAny: fn (?object $user): bool => $user !== null,
                         view: fn (): bool => true,
                         viewRawValues: fn (): bool => true,
-                    ),
+                    )
+                    ->diffStyle('split')
+                    ->availableDiffStyles(['unified', 'split', 'fields'])
+                    ->allowDiffStyleSwitching(),
             );
     }
 }

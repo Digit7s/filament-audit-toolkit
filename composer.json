@@ -7,7 +7,9 @@
         "laravel",
         "audit-log",
         "audit-trail",
-        "livewire"
+        "livewire",
+        "filament-plugin",
+        "record-history"
     ],
     "homepage": "https://github.com/Digit7s/filament-audit-toolkit",
     "support": {
@@ -18,18 +20,6 @@
     "authors": [
         {
             "name": "Digit7s"
-        }
-    ],
-    "repositories": [
-        {
-            "type": "path",
-            "url": "../../laravel-audit-toolkit",
-            "options": {
-                "symlink": true,
-                "versions": {
-                    "digit7s/laravel-audit-toolkit": "0.1.0"
-                }
-            }
         }
     ],
     "require": {
