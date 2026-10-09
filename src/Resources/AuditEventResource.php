@@ -40,6 +40,13 @@ class AuditEventResource extends Resource
         return config('filament-audit-toolkit.navigation_sort') ?? parent::getNavigationSort();
     }
 
+    public static function getRecordTitle(?Model $record): ?string
+    {
+        return $record instanceof AuditEvent
+            ? self::eventLabel((string) $record->event)
+            : parent::getRecordTitle($record);
+    }
+
     public static function canViewAny(): bool
     {
         return app(AuditAuthorization::class)->canViewAny();

@@ -157,7 +157,7 @@ it('renders the explorer and detail pages through Livewire', function (): void {
         ->assertCanSeeTableRecords([$event]);
 
     livewire(ViewAuditEvent::class, ['record' => $event->getKey()])
-        ->assertSee('livewire.example')
+        ->assertSee('Livewire Example')
         ->assertSee('published');
 });
 
