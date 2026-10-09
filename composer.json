@@ -2,6 +2,17 @@
     "$schema": "https://getcomposer.org/schema.json",
     "name": "digit7s/filament-audit-toolkit",
     "description": "A read-only Filament 5 explorer and record history for Digit7s Laravel audit events.",
+    "keywords": [
+        "filament",
+        "laravel",
+        "audit-log",
+        "audit-trail",
+        "livewire"
+    ],
+    "homepage": "https://github.com/Digit7s/filament-audit-toolkit",
+    "support": {
+        "issues": "https://github.com/Digit7s/filament-audit-toolkit/issues"
+    },
     "type": "library",
     "license": "MIT",
     "authors": [
