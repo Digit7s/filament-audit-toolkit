@@ -1,8 +1,16 @@
-# Filament Audit Toolkit
+# Audit Toolkit
+
+
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/digit7s/filament-audit-toolkit.svg?style=flat-square)](https://packagist.org/packages/digit7s/filament-audit-toolkit)
+[![Total Downloads](https://img.shields.io/packagist/dt/digit7s/filament-audit-toolkit.svg?style=flat-square)](https://packagist.org/packages/digit7s/filament-audit-toolkit)
+[![PHP Version](https://img.shields.io/packagist/php-v/digit7s/filament-audit-toolkit.svg?style=flat-square)](https://packagist.org/packages/digit7s/filament-audit-toolkit)
+[![Tests](https://github.com/Digit7s/filament-audit-toolkit/actions/workflows/quality.yml/badge.svg)](https://github.com/Digit7s/filament-audit-toolkit/actions/workflows/quality.yml)
+[![License](https://img.shields.io/packagist/l/digit7s/filament-audit-toolkit.svg?style=flat-square)](LICENSE)
+
 
 > A read-only audit explorer for FilamentPHP with structured diffs, JSON inspection, and record history.
 
-![Filament Audit Toolkit](art/audit-thumbnail.png)
+<img class="filament-hidden" src="https://raw.githubusercontent.com/Digit7s/filament-audit-toolkit/main/art/audit-thumbnail.png" alt="Filament Audit Toolkit">
 
 `digit7s/filament-audit-toolkit` adds a focused, read-only audit UI to Filament 5 applications using [`digit7s/laravel-audit-toolkit`](https://github.com/Digit7s/laravel-audit-toolkit). It does not replace the Laravel package, write audit events, or require a second audit store.
 
@@ -43,18 +51,7 @@ php artisan migrate
 
 Laravel and Filament discover both service providers automatically. Run `php artisan filament:assets` when publishing Filament assets for a deployed application.
 
-For local package development against sibling checkouts, add path repositories in the consuming application only:
-
-```json
-{
-    "repositories": [
-        {"type": "path", "url": "../laravel-audit-toolkit", "options": {"symlink": true, "versions": {"digit7s/laravel-audit-toolkit": "0.1.0"}}},
-        {"type": "path", "url": "../filament-audit-toolkit", "options": {"symlink": true, "versions": {"digit7s/filament-audit-toolkit": "0.1.0"}}}
-    ]
-}
-```
-
-This development override is intentionally not part of the published plugin manifest.
+For sibling-checkout development, see [CONTRIBUTING.md](CONTRIBUTING.md). Normal consumers do not need path repositories or development aliases.
 
 ## Panel Plugin Registration
 
@@ -87,13 +84,13 @@ If `viewRawValues` is omitted, safe value presentation follows `view`. Safe valu
 
 `Digit7s\FilamentAuditToolkit\Resources\AuditEventResource` provides a paginated, read-only table with event-name search, event/category/date filters, actor and subject references, occurrence timestamps, and optional source, request, correlation, batch, and original-actor columns. Event names and the eye action link only to authorized detail views.
 
-![Audit Explorer](art/audit-index-page.png)
+<img class="filament-hidden" src="https://raw.githubusercontent.com/Digit7s/filament-audit-toolkit/main/art/audit-index-page.png" alt="Audit Explorer">
 
 ## Audit Detail
 
 The detail page is `Digit7s\FilamentAuditToolkit\Resources\AuditEventResource\Pages\ViewAuditEvent`. It presents event summary, execution context, safe metadata, bounded field changes, and authorized developer details. Long event names wrap safely and exact timestamps are shown in UTC with relative context.
 
-![Audit Detail](art/audit-detail-page.png)
+<img class="filament-hidden" src="https://raw.githubusercontent.com/Digit7s/filament-audit-toolkit/main/art/audit-detail-page.png" alt="Audit Detail">
 
 ## Record History
 
@@ -162,11 +159,11 @@ Runtime selection is validated against enabled built-in styles, is component-loc
 
 The repository includes three real UI captures used above:
 
-- [Audit Explorer](art/audit-index-page.png)
-- [Audit Detail](art/audit-detail-page.png)
-- [Plugin preview](art/audit-thumbnail.png)
+- [Audit Explorer](https://raw.githubusercontent.com/Digit7s/filament-audit-toolkit/main/art/audit-index-page.png)
+- [Audit Detail](https://raw.githubusercontent.com/Digit7s/filament-audit-toolkit/main/art/audit-detail-page.png)
+- [Plugin preview](https://raw.githubusercontent.com/Digit7s/filament-audit-toolkit/main/art/audit-thumbnail.png)
 
-They contain synthetic labels and identifiers only; no real user data, internal URLs, credentials, or secrets. No screenshots are presented for diff styles that are not separately captured.
+They contain synthetic labels and identifiers only; no real user data, internal URLs, credentials, or secrets. The `filament-hidden` class keeps these README images available on GitHub while preventing duplicate artwork on the Filament Plugin Directory page, which uses the separately uploaded directory image. No screenshots are presented for diff styles that are not separately captured.
 
 ## Configuration
 

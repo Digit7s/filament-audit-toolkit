@@ -1,4 +1,4 @@
-# Controlled pilot release checklist
+# Maintainer release checklist
 
 - [ ] Confirm Filament 5, Livewire, Laravel, and PHP versions in the target application.
 - [ ] Run Composer validation, platform checks, Pint, Larastan/PHPStan, and the focused suite.

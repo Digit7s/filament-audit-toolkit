@@ -7,7 +7,8 @@
 - Added package-owned Filament CSS assets for reliable styled diff rendering without host Tailwind scanning.
 - Added global diff limits, panel-level style configuration, and optional validated runtime style switching.
 - Added structured diff documentation and regression coverage for nested paths, null/missing values, list indexes, limits, and style tampering.
-- Documented unpublished GitHub/VCS installation and controlled-pilot troubleshooting.
+- Separated consumer installation documentation from contributor-only sibling-checkout and path-repository setup.
+- Added Filament Directory-compatible hidden image markup to prevent README artwork duplication on the listing page.
 - Added Larastan/PHPStan level-5 analysis and package quality workflow.
 - Hardened static typing around Filament resource callbacks.
 - Retained panel-scoped authorization, safe timelines, diff rendering, and original-actor privacy controls.
@@ -16,4 +17,4 @@
 
 ## 0.1.0
 
-- Initial public development line for the Filament 5 explorer and record-history integration.
+- Initial public release for the Filament 5 explorer and record-history integration.
