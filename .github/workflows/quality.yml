@@ -11,13 +11,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Checkout private Laravel core dependency
+      - name: Checkout public Laravel core dependency
         uses: actions/checkout@v4
         with:
           repository: Digit7s/laravel-audit-toolkit
           ref: main
           path: .ci/laravel-audit-toolkit
-          token: ${{ secrets.DIGIT7S_PACKAGES_READ_TOKEN }}
+          token: ''
+          persist-credentials: false
       - name: Configure the core dependency as a local Composer repository
         run: >-
           composer config repositories.digit7s-core
