@@ -4,4 +4,4 @@ Keep this plugin focused on read-only Filament 5 presentation and authorization 
 
 Before opening a change, run `composer validate --no-check-publish`, `composer lint`, `composer analyse`, and `composer test`. Add focused Livewire or HTTP regression coverage for authorization changes. Do not use production data or modify the reference application.
 
-The private CI workflow expects a repository-scoped `DIGIT7S_PACKAGES_READ_TOKEN` secret with read access to `Digit7s/laravel-audit-toolkit`. The token is used only by GitHub Actions to check out the core dependency into a temporary path repository; it is never committed or embedded in Composer metadata.
+The CI workflow checks out the public `Digit7s/laravel-audit-toolkit` repository without a repository secret into the sibling path expected by the Composer path repository.
