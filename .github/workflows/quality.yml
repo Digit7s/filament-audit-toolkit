@@ -12,13 +12,12 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Checkout public Laravel core dependency
-        uses: actions/checkout@v4
-        with:
-          repository: Digit7s/laravel-audit-toolkit
-          ref: main
-          path: .ci/laravel-audit-toolkit
-          token: ''
-          persist-credentials: false
+        env:
+          GIT_TERMINAL_PROMPT: '0'
+        run: >-
+          git -c credential.helper= clone --depth=1 --branch main
+          https://github.com/Digit7s/laravel-audit-toolkit.git
+          .ci/laravel-audit-toolkit
       - name: Configure the core dependency as a local Composer repository
         run: >-
           composer config repositories.digit7s-core
