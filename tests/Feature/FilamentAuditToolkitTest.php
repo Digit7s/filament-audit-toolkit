@@ -18,6 +18,7 @@ use Digit7s\FilamentAuditToolkit\Tests\TestPanelProvider;
 use Filament\Facades\Filament;
 use Filament\Support\Assets\Css;
 use Filament\Support\Facades\FilamentAsset;
+use Filament\Tables\Filters\SelectFilter;
 use Illuminate\Support\Facades\Blade;
 
 use function Pest\Livewire\livewire;
@@ -343,6 +344,73 @@ it('renders the explorer and detail pages through Livewire', function (): void {
         ->assertSee('Livewire Example')
         ->assertSee('Not impersonated')
         ->assertSee('published');
+});
+
+it('loads empty event and category filter options', function (): void {
+    $component = livewire(ListAuditEvents::class);
+    $page = $component->instance();
+
+    if (! $page instanceof ListAuditEvents) {
+        throw new LogicException('The Livewire test instance is not the audit events page.');
+    }
+
+    $filters = $page->getTable()->getFilters();
+    $eventFilter = $filters['event'];
+    $categoryFilter = $filters['category'];
+
+    if (! $eventFilter instanceof SelectFilter || ! $categoryFilter instanceof SelectFilter) {
+        throw new LogicException('The audit event filters are not select filters.');
+    }
+
+    expect($eventFilter->getOptions())->toBe([])
+        ->and($categoryFilter->getOptions())->toBe([]);
+});
+
+it('loads distinct alphabetic filter options without changing explorer ordering', function (): void {
+    audit()->recordEvent('zeta.event', category: 'zeta', occurredAt: now()->subMinute());
+    audit()->recordEvent('alpha.event', category: 'alpha', occurredAt: now());
+    audit()->recordEvent('alpha.event', category: 'alpha', occurredAt: now()->subMinutes(2));
+    audit()->recordEvent('no.category', occurredAt: now()->subMinutes(3));
+
+    $component = livewire(ListAuditEvents::class);
+    $page = $component->instance();
+
+    if (! $page instanceof ListAuditEvents) {
+        throw new LogicException('The Livewire test instance is not the audit events page.');
+    }
+
+    $filters = $page->getTable()->getFilters();
+    $eventFilter = $filters['event'];
+    $categoryFilter = $filters['category'];
+
+    if (! $eventFilter instanceof SelectFilter || ! $categoryFilter instanceof SelectFilter) {
+        throw new LogicException('The audit event filters are not select filters.');
+    }
+
+    $orders = AuditEventResource::getEloquentQuery()->getQuery()->orders;
+
+    expect($eventFilter->getOptions())->toBe([
+        'alpha.event' => 'Alpha Event',
+        'no.category' => 'No Category',
+        'zeta.event' => 'Zeta Event',
+    ])
+        ->and($categoryFilter->getOptions())->toBe([
+            'alpha' => 'alpha',
+            'zeta' => 'zeta',
+        ])
+        ->and($orders)->toContain([
+            'column' => 'occurred_at',
+            'direction' => 'desc',
+        ]);
+});
+
+it('keeps unauthorized explorer queries empty while filter queries retain their read scopes', function (): void {
+    audit()->recordEvent('protected.event');
+
+    app(AuditAuthorization::class)->configure();
+
+    expect(AuditEventResource::getEloquentQuery()->count())->toBe(0)
+        ->and(AuditEventResource::getEloquentQuery()->toSql())->toContain('1 = 0');
 });
 
 it('renders Audit Detail sections in independent responsive column stacks', function (): void {

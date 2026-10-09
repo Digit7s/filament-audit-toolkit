@@ -15,6 +15,12 @@
 - Polished the Audit Explorer defaults with authorized event-name navigation, toggleable secondary columns, concise actor/subject labels, relative UTC-safe timestamps, and clearer empty/search states.
 - Refactored Audit Detail into independent desktop information and changes stacks to remove row-coupled whitespace while preserving responsive single-column rendering.
 
+## 0.1.1
+
+- Fixed MySQL `DISTINCT` Event and Category filter queries inheriting the audit query's timestamp ordering.
+- Preserved the Audit Explorer's chronological record ordering.
+- Added regression coverage for empty tables, duplicate values, alphabetical options, MySQL execution, and authorization boundaries.
+
 ## 0.1.0
 
 - Initial public release for the Filament 5 explorer and record-history integration.
