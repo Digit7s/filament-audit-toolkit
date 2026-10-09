@@ -155,16 +155,6 @@ FilamentAuditToolkitPlugin::make()
 
 Runtime selection is validated against enabled built-in styles, is component-local, and is never persisted. The Audit Detail page and Record History relation expose the native Livewire action only when switching is enabled.
 
-## Screenshots Gallery
-
-The repository includes three real UI captures used above:
-
-- [Audit Explorer](https://raw.githubusercontent.com/Digit7s/filament-audit-toolkit/main/art/audit-index-page.png)
-- [Audit Detail](https://raw.githubusercontent.com/Digit7s/filament-audit-toolkit/main/art/audit-detail-page.png)
-- [Plugin preview](https://raw.githubusercontent.com/Digit7s/filament-audit-toolkit/main/art/audit-thumbnail.png)
-
-They contain synthetic labels and identifiers only; no real user data, internal URLs, credentials, or secrets. The `filament-hidden` class keeps these README images available on GitHub while preventing duplicate artwork on the Filament Plugin Directory page, which uses the separately uploaded directory image. No screenshots are presented for diff styles that are not separately captured.
-
 ## Configuration
 
 The package configuration controls navigation grouping/sort, diff styles and bounds, JSON viewer mode and bounds, and copy support. The plugin does not publish a second database configuration or migration. The Laravel core package remains the source of audit storage and privacy policy.
